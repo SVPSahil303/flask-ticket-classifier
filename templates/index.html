@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Support Ticket Classifier</title>
+    <!-- Animate.css for built-in animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <!-- Custom CSS for cartoonish look -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1 class="animate__animated animate__bounceInDown">Support Ticket Classifier</h1>
+        <form method="POST" action="/">
+            <div class="form-group">
+                <label for="description">Ticket Description:</label>
+                <textarea name="description" id="description" rows="4" placeholder="Enter ticket description here..." required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="subject">Ticket Subject:</label>
+                <input type="text" name="subject" id="subject" placeholder="Enter ticket subject here..." required>
+            </div>
+            <button type="submit" class="animated-button">Classify Ticket</button>
+        </form>
+        {% if prediction %}
+        <div class="result animate__animated animate__fadeIn">
+            <h2>Prediction Results</h2>
+            <p><strong>Category:</strong> {{ prediction['Category'] }}</p>
+            <p><strong>Sub-Category:</strong> {{ prediction['Sub-Category'] }}</p>
+            <p><strong>Group:</strong> {{ prediction['Group'] }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
