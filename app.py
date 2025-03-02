@@ -4,7 +4,7 @@ import joblib
 app = Flask(__name__)
 
 # Load the saved model (update the path if necessary)
-model = joblib.load('ticket_classifier_model1.pkl')
+model = joblib.load('ticket_classifier_model.pkl')
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
